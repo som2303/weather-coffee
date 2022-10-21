@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link rel="stylesheet" href="{% static 'coffee/css/style.css' %}?after">
+</head>
+<body>
+    <div class="header">coffee & weather</div>
+    <div class="all">
+        
+        
+            <div class="btn_box" >
+                <div class="btn" onclick="page1()">
+                  전체
+                </div>
+                <div class="btn" onclick="page2()">
+                  성별
+                </div>
+                <div class="btn" onclick="page3()">
+                  세대별
+                </div>
+                
+            </div>
+            <div class="chart-box">
+                <figure class="highcharts-figure">
+                    <div id="container">
+                        <script>
+                          let data = JSON.parse("{{ data_json | escapejs }}");
+                          let count = [];
+                          for (c in data) {
+                            count.push(data[c].count)
+                          }
+
+                          let data1 = JSON.parse("{{ data_json1 | escapejs }}");
+                          let countm = [];
+                          let countf = [];
+                          for (c in data1) {
+                            if (data1[c].sex=="F"){
+                              countf.push(data1[c].count)
+                            }
+                            else{
+                              countm.push(data1[c].count)
+                            }
+                          }
+
+                          let data2 = JSON.parse("{{ data_json2 | escapejs }}");
+                          let count10 = [];
+                          let count20 = [];
+                          let count30 = [];
+                          let count40 = [];
+                          let count50 = [];
+                          let count60 = [];
+
+                          
+                          for (c in data2) {
+                            if (data2[c].age=="10"){
+                              count10.push(data2[c].count)
+                            }
+                            else if (data2[c].age=="20"){
+                              count20.push(data2[c].count)
+                            }
+                            else if (data2[c].age=="30"){
+                              count30.push(data2[c].count)
+                            }
+                            else if (data2[c].age=="40"){
+                              count40.push(data2[c].count)
+                            }
+                            else if (data2[c].age=="50"){
+                              count50.push(data2[c].count)
+                            }
+                            else if (data2[c].age=="60"){
+                              count60.push(data2[c].count)
+                            }
+                            // console.log(data2[c].age)
+                          }
+
+                          Highcharts.chart('container', {
+                            chart: {
+                                backgroundColor: '#FCFFC500',
+                            },
+                            credits: {
+                                enabled: false
+                            },
+                            
+                            colors: ['#6da7a4', '#8c9a92', '#7e8b93', '#d3bf91', '#6c3a17','#674a3c'],
+                            title: {
+                              text: '평균 기온 별 커피 소비량'
+                            },
+                          
+                            subtitle: {
+                              text: '2020-03 ~ 2020-05'
+                            },
+                          
+                            yAxis: {
+                              title: {
+                                text: '소비 인구(명)'
+                              }
+                            },
+                          
+                            xAxis: {
+                              title: {
+                                text: '평균 기온(°C)'
+                              },
+                              accessibility: {
+                                rangeDescription: 'Range: 0 to 30'
+                              }
+                            },
+                          
+                            legend: {
+                              layout: 'vertical',
+                              align: 'right',
+                              verticalAlign: 'middle'
+                            },
+                          
+                            plotOptions: {
+                              series: {
+                                label: {
+                                  connectorAllowed: false
+                                },
+                                pointStart: 0
+                              }
+                            },
+                            
+                            series: [{
+                              name: '서울시 전체',
+                              data: count
+                            }],
+                          
+                            responsive: {
+                              rules: [{
+                                condition: {
+                                  maxWidth: 500
+                                },
+                                chartOptions: {
+                                  legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                  }
+                                }
+                              }]
+                            }
+                        
+                        });
+
+                        function page1() {
+                          Highcharts.chart('container', {
+                            colors: ['#6da7a4', '#8c9a92', '#7e8b93', '#d3bf91', '#6c3a17','#674a3c'],
+                            title: {
+                              text: '평균 기온 별 커피 소비량'
+                            },
+                          
+                            subtitle: {
+                              text: '2020-03 ~ 2020-05'
+                            },
+                          
+                            yAxis: {
+                              title: {
+                                text: '소비 인구(명)'
+                              }
+                            },
+                          
+                            xAxis: {
+                              title: {
+                                text: '평균 기온(°C)'
+                              },
+                              accessibility: {
+                                rangeDescription: 'Range: 0 to 30'
+                              }
+                            },
+                          
+                            legend: {
+                              layout: 'vertical',
+                              align: 'right',
+                              verticalAlign: 'middle'
+                            },
+                          
+                            plotOptions: {
+                              series: {
+                                label: {
+                                  connectorAllowed: false
+                                },
+                                pointStart: 0
+                              }
+                            },
+                            
+                            series: [{
+                              name: '서울시 전체',
+                              data: count
+                            }],
+                          
+                            responsive: {
+                              rules: [{
+                                condition: {
+                                  maxWidth: 500
+                                },
+                                chartOptions: {
+                                  legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                  }
+                                }
+                              }]
+                            }
+                        
+                        });
+                        }
+
+                        function page2() {
+                          
+                          Highcharts.chart('container', {
+                            title: {
+                              text: '평균 기온 별 커피 소비량(성별)'
+                            },
+                          
+                            subtitle: {
+                              text: '2020-03 ~ 2020-05'
+                            },
+                          
+                            yAxis: {
+                              title: {
+                                text: '소비 인구(명)'
+                              }
+                            },
+                          
+                            xAxis: {
+                              title: {
+                                text: '평균 기온(°C)'
+                              },
+                              accessibility: {
+                                rangeDescription: 'Range: 0 to 30'
+                              }
+                            },
+                          
+                            legend: {
+                              layout: 'vertical',
+                              align: 'right',
+                              verticalAlign: 'middle'
+                            },
+                          
+                            plotOptions: {
+                              series: {
+                                label: {
+                                  connectorAllowed: false
+                                },
+                                pointStart: 0
+                              }
+                            },
+                            
+                            series: [{
+                              name: '남성',
+                              data: countm
+                            }, {
+                              name: '여성',
+                              data: countf
+                            }],
+                          
+                            responsive: {
+                              rules: [{
+                                condition: {
+                                  maxWidth: 500
+                                },
+                                chartOptions: {
+                                  legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                  }
+                                }
+                              }]
+                            }
+                        
+                        });
+                        }
+
+                        function page3() {
+                          
+                          Highcharts.chart('container', {
+                            colors: ['#6da7a4', '#8c9a92', '#7e8b93', '#d3bf91', '#6c3a17','#674a3c'],
+                            title: {
+                              text: '평균 기온 별 커피 소비량(세대별)'
+                            },
+                          
+                            subtitle: {
+                              text: '2020-03 ~ 2020-05'
+                            },
+                          
+                            yAxis: {
+                              title: {
+                                text: '소비 인구(명)'
+                              }
+                            },
+                          
+                            xAxis: {
+                              title: {
+                                text: '평균 기온(°C)'
+                              },
+                              accessibility: {
+                                rangeDescription: 'Range: 0 to 30'
+                              }
+                            },
+                          
+                            legend: {
+                              layout: 'vertical',
+                              align: 'right',
+                              verticalAlign: 'middle'
+                            },
+                          
+                            plotOptions: {
+                              series: {
+                                label: {
+                                  connectorAllowed: false
+                                },
+                                pointStart: 0
+                              }
+                            },
+                            
+                            series: [{
+                              name: '미성년자',
+                              data: count10
+                            }, {
+                              name: '20대',
+                              data: count20
+                            }, {
+                              name: '30대',
+                              data: count30
+                            }, {
+                              name: '40대',
+                              data: count40
+                            }, {
+                              name: '50대',
+                              data: count50
+                            }, {
+                              name: '60대 이상',
+                              data: count60
+                            }],
+                          
+                            responsive: {
+                              rules: [{
+                                condition: {
+                                  maxWidth: 500
+                                },
+                                chartOptions: {
+                                  legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                  }
+                                }
+                              }]
+                            }
+                        
+                        });
+                        }
+                          </script>
+
+                    </div>
+                </figure>
+            </div>
+            <div class="result_text">
+              <div class="text">
+                <p class="title">목적</p>
+                <p class="contents">커피에 대한 수요와 날씨간의 연관성을 알아보고자 한다.</p>
+              </div>
+
+              <div class="text">
+                <p class="title">데이터</p>
+                <p class="contents">
+                  데이터는 기상청과 환경 비즈니스 빅데이터 플랫폼의 자료를 활용하였다. 
+                  기상청에서는 평균 기온 데이터를 1°C 간격으로 나누어 사용하였으며, 
+                  환경 비즈니스 빅데이터 플랫폼에서는 서울의 행정동별 커피분야 소비인구 데이터를 사용하였다. 
+                  모든 데이터는 2020년 3월부터 5월까지의 데이터를 사용하였다.
+                </p>
+                <div class="rink_box" >
+                  <div class="rink_btn" onclick="page1()">
+                    기상청
+                  </div>
+                  <div class="rink_btn" onclick="page2()">
+                    envbigdata
+                  </div>
+                </div>
+              </div>
+
+              <div class="text">
+                <p class="title">분석 및 결과</p>
+                <p class="contents">
+                    그래프들은 평균기온에 따른 커피 수요 인구를 각각 전체, 성별, 세대별로 분류하여 나타낸 것이다.
+                  위 그래프에서 알 수 있듯이 평균기온이 상승함에 따라 커피의 수요량도 증가함을 볼 수 있다. 
+                  상관계수도 ~~로 강한 상관관계가 있음을 확인할 수 있다. 
+                  또한 세대별 커피 수요량 또한 20대 이후 꾸준히 감소하는 것 또한 확인할 수 있다. (상관계수~~~)
+                </p>
+                <p class="contents">
+                    평균기온과 커피에 대한 상관관계가 있다는 것을 확인 할 수 있었으나 기간이 짧은 탓에 
+                  여름, 겨울에 수요변화에 대해 알 수 없었다. 
+                  그러나 이에 대한 추론으로 기온 변화뿐 아니라 강수량, 불쾌지수, 낮의 길이 등과 같은 
+                  날씨 데이터도 커피 수요에 영향을 줄 가능성이 높을 것이 생각한다.
+                </p>
+              </div>
+            </div>
+        
+    </div>
+</body>
+</html>
