@@ -1,126 +1,165 @@
 @font-face {
-  font-family: 'SF_HambakSnow';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+  font-family: 'KCC-eunyoung';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KCC-eunyoung-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
 * {
-  font-family: 'SF_HambakSnow';
-  /* font-size: 10px; */
-  background-color: rgb(255, 248, 240);
-  margin: 0;
-  padding: 0;
-  line-height: 2rem;
+font-family: 'KCC-eunyoung';
+/* font-size: 10px; */
+/*background-color: #effbff;*/
+margin: 0;
+padding: 0;
+line-height: 2rem;
+color: #2f1e13;
 }
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+width:100%;
+/*display: flex;*/
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background: linear-gradient(#effbff,#effbff, #b7a086a0);
 }
 
 .header {
-  padding: 1rem;
-  font-size: 1.5rem;
+  position: fixed;
+  top: 0;
+  z-index:10;
+  background-color: #ae9476cd;
+padding: 1rem;
+padding-left:4rem;
+font-size: 1.5rem;
+width:100%;
+justify-content: center;
+align-items: center;
 }
 
 .all {
-  
-  display: flex;
-  padding: 1rem 5rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+/*display: flex;*/
+padding: 1rem 5rem;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 .btn_box {
-  width: 100%;
-  /* margin: 1rem; */
-  /* height: 20vh; */
-  /* padding: 5rem; */
-  /* align-items: center; */
-  display: grid;
-  flex-direction: row;
-  grid-template-columns: 1fr 1fr 1fr;
+
+ font-size:12rem;
+ height: 5rem;
+ padding: 3rem;
+ padding-top:5rem;
+display: grid;
+flex-direction: row;
+grid-template-columns: 1fr 1fr 1fr;
+}
+#container{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
-.btn {
-  font-size: 20px;
-  text-align: center;
+
+.btn{
   padding: 0.5rem;
-  /* width: 360px; */
+  margin:1.5rem;
+ /*width: 300px;*/
+  text-align: center;
+background:#ae9476;
+color:#effbff;
+position:relative;
+height:3rem;
+font-size:2rem;
+/*padding:0 2em;*/
+cursor:pointer;
+transition:800ms ease all;
 }
+.btn:hover{
+background:#b7a086a0;
+color:#2f1e13;
+}
+.btn:before,.btn:after{
+content:'';
+position:absolute;
+top:0;
+right:0;
+height:2px;
+width:0;
+background: #937261;
+transition:400ms ease all;
+}
+.btn:after{
+right:inherit;
+top:inherit;
+left:0;
+bottom:0;
+}
+.btn:hover:before,.btn:hover:after{
+width:100%;
+transition:800ms ease all;
+}
+
+
 
 .chart-box{
-  padding: 1.2rem;
+padding: 1.2rem;
+margin-bottom:5rem;
+}
+.line1{
+  height:5rem;
+}
+.line{
+  height:2px;
+background: #937261;
 }
 .result_text {
-  padding-top: 7rem;
+padding-top: 2rem;
+
 }
 .result_text .text {
-  padding: 5rem 3rem;
+padding: 1rem 3rem 4rem;
+/*background-color:#dac8becf;*/
 }
 
 .result_text .text .title{
-  padding-bottom: 1rem;
-  font-size: 1.8rem;
+padding-bottom: 1rem;
+font-size: 2rem;
 }
 
 .result_text .text .contents{
-  padding-top: 0.5rem;
-  text-indent: 10px;
-  font-size: 1.2rem;
+padding-top: 0.5rem;
+text-indent: 10px;
+font-size: 1.3rem;
 }
 
-
-
-
-/* .highcharts-figure,
-.highcharts-data-table table {
-  min-width: 360px;
-  max-width: 800px;
-  margin: 1em auto;
-} */
-
-/* .highcharts-data-table table {
-  font-family: Verdana, sans-serif;
-  border-collapse: collapse;
-  border: 1px solid #ebebeb;
-  margin: 10px auto;
+.rink_box{
+  display: flex;
+flex-direction: row;
+}
+.rink_btn{
+  border-radius:10px;
+  border: 2px solid #937261;
+  padding: 0.5rem;
+  margin: 0.5rem;
+ width: 150px;
   text-align: center;
-  width: 100%;
-  max-width: 500px;
-} */
-
-/* .highcharts-data-table caption {
-  padding: 1em 0;
-  font-size: 1.2em;
-  color: #555;
-} */
-
-/* .highcharts-data-table th {
-  font-weight: 600;
-  padding: 0.5em;
-} */
-
-/* .highcharts-data-table td,
-.highcharts-data-table th,
-.highcharts-data-table caption {
-  padding: 0.5em;
-} */
-
-/* .highcharts-data-table thead tr,
-.highcharts-data-table tr:nth-child(even) {
-  background: #a84343;
+background:#856c5c;
+color:#fff;
+position:relative;
+height:2rem;
+font-size:1.5rem;
+/*padding:0 2em;*/
+cursor:pointer;
+transition:800ms ease all;
+}
+.rink_btn:hover{
+  border: 2px solid #937261;
+background:#b7a086a0;
+color:#2f1e13;
 }
 
-.highcharts-data-table tr:hover {
-  background: #557caf;
-} */
 
-/* #container {
-  subtitle:
-    text: '2020-03 ~ 2020-05'
-} */
+
 
