@@ -29,7 +29,7 @@ def index(request):
 
 
 def add_data(request):
-    path = 'C:/Users/jooso/Documents/remote_repo/mp1/coffee_eda/homepage/data/data.csv'
+    path = './data/data.csv'
     file = open(path)
     reader = csv.reader(file)
     next(reader)
@@ -39,7 +39,7 @@ def add_data(request):
     DataOrigin.objects.bulk_create(list)
     file.close()
 
-    path = 'C:/Users/jooso/Documents/remote_repo/mp1/coffee_eda/homepage/data/data_f.csv'
+    path = './data/data_f.csv'
     file = open(path)
     reader = csv.reader(file)
     next(reader)
@@ -49,7 +49,7 @@ def add_data(request):
     DataSex.objects.bulk_create(list)
     file.close()
     
-    path = 'C:/Users/jooso/Documents/remote_repo/mp1/coffee_eda/homepage/data/data_m.csv'
+    path = './data/data_m.csv'
     file = open(path)
     reader = csv.reader(file)
     next(reader)
@@ -58,7 +58,7 @@ def add_data(request):
         list.append(DataSex(temperature=row[1],count=row[2],sex=row[3]))
     DataSex.objects.bulk_create(list)
 
-    path = 'C:/Users/jooso/Documents/remote_repo/mp1/coffee_eda/homepage/data/data10.csv'
+    path = './data/data10.csv'
     file = open(path)
     reader = csv.reader(file)
     next(reader)
@@ -68,7 +68,7 @@ def add_data(request):
     DataAge.objects.bulk_create(list)
     file.close()
 
-    path = 'C:/Users/jooso/Documents/remote_repo/mp1/coffee_eda/homepage/data/data20.csv'
+    path = './data/data20.csv'
     file = open(path)
     reader = csv.reader(file)
     next(reader)
@@ -78,7 +78,7 @@ def add_data(request):
     DataAge.objects.bulk_create(list)
     file.close()
 
-    path = 'C:/Users/jooso/Documents/remote_repo/mp1/coffee_eda/homepage/data/data30.csv'
+    path = './data/data30.csv'
     file = open(path)
     reader = csv.reader(file)
     next(reader)
@@ -88,7 +88,7 @@ def add_data(request):
     DataAge.objects.bulk_create(list)
     file.close()
 
-    path = 'C:/Users/jooso/Documents/remote_repo/mp1/coffee_eda/homepage/data/data40.csv'
+    path = './data/data40.csv'
     file = open(path)
     reader = csv.reader(file)
     next(reader)
@@ -98,7 +98,7 @@ def add_data(request):
     DataAge.objects.bulk_create(list)
     file.close()
 
-    path = 'C:/Users/jooso/Documents/remote_repo/mp1/coffee_eda/homepage/data/data50.csv'
+    path = './data/data50.csv'
     file = open(path)
     reader = csv.reader(file)
     next(reader)
@@ -108,7 +108,7 @@ def add_data(request):
     DataAge.objects.bulk_create(list)
     file.close()
 
-    path = 'C:/Users/jooso/Documents/remote_repo/mp1/coffee_eda/homepage/data/data60.csv'
+    path = './data/data60.csv'
     file = open(path)
     reader = csv.reader(file)
     next(reader)
@@ -119,5 +119,3 @@ def add_data(request):
     file.close()
 
     return HttpResponse("complete")
-# Create your views here.
-
