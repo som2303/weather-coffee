@@ -17,14 +17,11 @@ def index(request):
     data_json2 = json.dumps(list(data2), cls=DjangoJSONEncoder)
     
     context = {
-    #html로 보내는 필드명을 ''(따옴표)안에 넣어주면 됩니다.
     'data_json': data_json,
     'data_json1': data_json1,
     'data_json2': data_json2,
     }
- 
- 
-##html로 값을 보내는 부분    
+
     return render(request, 'index.html', context)
 
 
